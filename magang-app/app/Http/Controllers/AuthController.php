@@ -9,8 +9,8 @@ use Validator;
 use Hash;
 use Session;
 use App\Models\User;
-
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -26,13 +26,15 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $rules = [
-            'email'                 => 'required|email',
+            // 'email'                 => 'required|email',
+            'no_induk'                 => 'required',
             'password'              => 'required|string'
         ];
 
         $messages = [
-            'email.required'        => 'Email wajib diisi',
-            'email.email'           => 'Email tidak valid',
+            // 'email.required'        => 'Email wajib diisi',
+            // 'email.email'           => 'Email tidak valid',
+            'no_induk.required'        => 'No. Induk wajib diisi',
             'password.required'     => 'Password wajib diisi',
             'password.string'       => 'Password harus berupa string'
         ];
@@ -44,7 +46,8 @@ class AuthController extends Controller
         }
 
         $data = [
-            'email'     => $request->input('email'),
+            // 'email'     => $request->input('email'),
+            'no_induk'     => $request->input('no_induk'),
             'password'  => $request->input('password'),
         ];
 
@@ -57,7 +60,7 @@ class AuthController extends Controller
         } else { // false
 
             //Login Fail
-            Session::flash('error', 'Email atau password salah');
+            Session::flash('error', 'No. Induk atau password salah');
             return redirect()->route('login');
         }
 
@@ -73,6 +76,7 @@ class AuthController extends Controller
         $rules = [
             'name'                  => 'required|min:3|max:35',
             'email'                 => 'required|email|unique:users,email',
+            'no_induk'                 => 'required|unique:users,no_induk',
             'password'              => 'required|confirmed',
             'role'                  => 'required'
         ];
@@ -84,6 +88,8 @@ class AuthController extends Controller
             'email.required'        => 'Email wajib diisi',
             'email.email'           => 'Email tidak valid',
             'email.unique'          => 'Email sudah terdaftar',
+            'no_induk.required'          => 'No. Induk wajib diisi',
+            'no_induk.unique'            => 'No. Induk sudah terdaftar',
             'password.required'     => 'Password wajib diisi',
             'password.confirmed'    => 'Password tidak sama dengan konfirmasi password'
         ];
@@ -100,8 +106,15 @@ class AuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->email_verified_at = \Carbon\Carbon::now();
         $user->role = $request->role;
+        $user->no_induk = $request->no_induk;
         $simpan = $user->save();
-
+        if($request->role == 'siswa'){
+            $id_user = DB::table('users')->orderBy('id','desc')->first();
+            $data['id_user'] = $id_user->id;
+            $data['created_at'] = Carbon::now();
+            $data['updated_at'] = Carbon::now();
+            DB::table('siswa')->insert($data);
+        }
         if($simpan){
             Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
             return redirect()->route('login');
@@ -109,6 +122,7 @@ class AuthController extends Controller
             Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
             return redirect()->route('register');
         }
+
     }
 
     public function logout()

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>HELL-O</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -25,9 +25,16 @@
   <link rel="stylesheet" href="{{url('AdminLTE-3.1.0/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{url('AdminLTE-3.1.0/plugins/summernote/summernote-bs4.min.css')}}">
-  
-  
+
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{url('AdminLTE-3.1.0/plugins/select2/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{url('AdminLTE-3.1.0/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+  <!-- datatables ku -->
   <link rel="stylesheet" type="text/css" href="{{url('DataTables/datatables.min.css')}}"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.11.2/af-2.3.7/b-2.0.0/b-colvis-2.0.0/b-html5-2.0.0/b-print-2.0.0/cr-1.5.4/date-1.1.1/fc-3.3.3/fh-3.1.9/kt-2.6.4/r-2.2.9/rg-1.1.3/rr-1.2.8/sc-2.0.5/sb-1.2.1/sp-1.4.0/sl-1.3.3/datatables.min.js"></script>
+  <!-- sweet allert2 ku -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
@@ -37,14 +44,14 @@
     <!-- Navbar -->
     @include('layouts.navbar')
     <!-- /.navbar -->
-    
+
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-light-primary elevation-4">
       <!-- Sidebar -->
       @include('layouts.sidebar')
       <!-- /.sidebar -->
     </aside>
-    
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       @yield('content')
@@ -100,9 +107,10 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{url('AdminLTE-3.1.0/dist/js/pages/dashboard.js')}}"></script>
 
+<!-- datatables ku -->
 <script type="text/javascript" src="{{url('DataTables/datatables.min.js')}}"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<!-- Select2 -->
+<script src="{{url('AdminLTE-3.1.0/plugins/select2/js/select2.min.js')}}"></script>
 
 </body>
 </html>

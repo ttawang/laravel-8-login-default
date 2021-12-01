@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\admin\SiswaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PendaftaranPasienController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -34,11 +33,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::middleware('admin')->group(function () {
-        Route::get('pendaftaranpasien', [PendaftaranPasienController::class, 'index']);
-        Route::get('pendaftaranpasien/get_data', [PendaftaranPasienController::class, 'get_data']);
-        Route::post('pendaftaranpasien/simpan', [PendaftaranPasienController::class, 'simpan']);
-        Route::get('pendaftaranpasien/edit/{id}', [PendaftaranPasienController::class, 'edit']);
-        Route::get('pendaftaranpasien/hapus/{id}', [PendaftaranPasienController::class, 'hapus']);
+        Route::get('siswa', [SiswaController::class, 'index']);
+        Route::get('siswa/get_data', [SiswaController::class, 'get_data']);
+        Route::post('siswa/simpan', [SiswaController::class, 'simpan']);
+        Route::get('siswa/edit/{id}', [SiswaController::class, 'edit']);
+        Route::get('siswa/hapus/{id}', [SiswaController::class, 'hapus']);
+
     });
 
 });

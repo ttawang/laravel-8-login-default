@@ -9,7 +9,7 @@
       <a href="#" class="nav-link">{{$judul}}</a>
     </li>
   </ul>
-  
+
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
@@ -23,9 +23,12 @@
         <i class="fas fa-user"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-        <a href="{{url('logout')}}" class="dropdown-item">
-          <i class="fas fa-arrow-left mr-2"></i>Log Out
+        <a href="{{url('#')}}" class="dropdown-item">
+          <i class="fas fa-pen mr-2"></i>Edit Profile
         </a>
+        <a href="{{url('logout')}}" class="dropdown-item">
+            <i class="fas fa-arrow-left mr-2"></i>Log Out
+          </a>
       </div>
     </li>
   </ul>

@@ -39,6 +39,10 @@
                         <input type="text" name="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="form-group">
+                        <label for=""><strong>No. Induk</strong></label>
+                        <input type="text" name="no_induk" class="form-control" placeholder="No. Induk">
+                    </div>
+                    <div class="form-group">
                         <label for=""><strong>Password</strong></label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
@@ -49,8 +53,10 @@
                     <div class="form-group">
                         <label for=""><strong>Pilih Role</strong></label>
                         <!--input type="text" name="role" class="form-control" placeholder="role"-->
-                        <select name="role" class="form-control">
+                        <select name="role" class="form-control select-search">
                             <option value="admin">Admin</option>
+                            <option value="siswa">Siswa</option>
+                            <option value="guru">Guru</option>
                         </select>
                     </div>
                 </div>

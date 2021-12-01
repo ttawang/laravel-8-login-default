@@ -40,9 +40,13 @@
                             {{ Session::get('error') }}
                         </div>
                     @endif
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for=""><strong>Email</strong></label>
                         <input type="text" name="email" class="form-control" placeholder="Email">
+                    </div> --}}
+                    <div class="form-group">
+                        <label for=""><strong>No. Induk</strong></label>
+                        <input type="text" name="no_induk" class="form-control" placeholder="No. Induk">
                     </div>
                     <div class="form-group">
                         <label for=""><strong>Password</strong></label>
